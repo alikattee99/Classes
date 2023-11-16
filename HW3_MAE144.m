@@ -5,12 +5,13 @@ Gd=tf([0.1*1.998],[1 0.1],'InputDelay',6)
 G=tf([0.1],[1 0.1],'InputDelay',6)
 Gs=pade(Gd,2)
 [Gain_m,Phase_m]= margin(Gs)
-(bode(Gs))
+(bode(Gd))
 %rlocus(Gs)
 %% 4a
 T=(2*0.4)*(s^2 +s/0.4 +1/(0.4*1.6))/s
 L=T*Gs
-bode(L)
+Ld=Gd*T
+bode(Ld)
 rlocus(L)
 [Gm,Pm]= margin(L)
 %% P 6 
